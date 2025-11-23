@@ -1,5 +1,37 @@
 ---
 
+- name: Ensure font directory exists
+  file:
+    path: "/usr/local/share/fonts"
+    state: directory
+    mode: "0755"
+  become: yes
+
+- name: Install MesloLGS Nerd Fonts 
+  get_url:
+    url: "{{ item.url }}"
+    dest: "/usr/local/share/fonts/{{ item.name }}"
+    mode: "0644"
+  loop:
+    - { name: "MesloLGS NF Regular.ttf",      url: "https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf" }
+    - { name: "MesloLGS NF Bold.ttf",         url: "https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf" }
+    - { name: "MesloLGS NF Italic.ttf",       url: "https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf" }
+    - { name: "MesloLGS NF Bold Italic.ttf",  url: "https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf" }
+  become: yes
+
+- name: Refresh font cache
+  command: fc-cache -f -v
+
+- name: Install nvim dependencies
+  become: yes
+  package:
+    name:
+      - gcc
+      - ripgrep
+      - fzf
+      - python3-venv
+    state: present
+
 - name: Ensure download directory exists
   file:
     path: /tmp/nvim-nightly

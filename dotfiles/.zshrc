@@ -22,3 +22,6 @@ source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 # Aliases
 alias gs="git status"
 alias gd="git diff"
+
+alias vi="nvim"
+alias nv="nvim"
