@@ -3,6 +3,10 @@ HISTFILE=$HOME/.zsh_history
 SAVEHIST=1000
 HISTSIZE=100
 
+# Zsh fix ctrl+arrow movement
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
+
 # Zsh Pure theme config
 fpath+=($HOME/.zsh/pure)
 autoload -U promptinit; promptinit
