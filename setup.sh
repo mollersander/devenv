@@ -14,4 +14,10 @@ sudo apt install -y software-properties-common ansible
 echo "[INFO] Running Ansible setup playbook..."
 ansible-playbook ansible/playbooks/setup.yml
 
+#########################################
+# Run the playbook
+#########################################
+echo "[INFO] Sourcing .zshrc"
+source ~/.zshrc
+
 echo "[INFO] Done."

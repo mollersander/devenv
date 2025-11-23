@@ -25,3 +25,5 @@ alias gd="git diff"
 
 alias vi="nvim"
 alias nv="nvim"
+
+alias ll="ls -lha"

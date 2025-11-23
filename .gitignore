@@ -1,2 +1,6 @@
 # Git
 .git
+
+# Submodules
+dotfiles/.zsh/pure/
+dotfiles/.zsh/zsh-autosuggestions/
