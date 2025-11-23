@@ -1,0 +1,37 @@
+---
+
+- name: Ensure download directory exists
+  file:
+    path: /tmp/nvim-nightly
+    state: directory
+    mode: '0755'
+
+- name: Download Neovim nightly build
+  get_url:
+    url: https://github.com/neovim/neovim/releases/download/nightly/nvim-linux-x86_64.tar.gz
+    dest: /tmp/nvim-nightly/nvim.tar.gz
+    mode: '0644'
+    force: yes
+
+- name: Remove any previous extracted version
+  file:
+    path: /tmp/nvim-nightly/nvim
+    state: absent
+
+- name: Extract Neovim nightly archive
+  unarchive:
+    src: /tmp/nvim-nightly/nvim.tar.gz
+    dest: /tmp/nvim-nightly/
+    remote_src: yes
+
+- name: Install Neovim to /usr/local
+  become: yes
+  command: cp -r /tmp/nvim-nightly/nvim-linux-x86_64/ /usr/local/nvim
+
+- name: Ensure /usr/local/bin/nvim symlink exists
+  become: yes
+  file:
+    src: /usr/local/nvim/bin/nvim
+    dest: /usr/local/bin/nvim
+    state: link
+
