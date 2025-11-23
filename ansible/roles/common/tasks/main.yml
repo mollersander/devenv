@@ -1,0 +1,19 @@
+---
+
+- name: Define project root path fact
+  set_fact:
+    project_root: "{{ playbook_dir | dirname | dirname }}"
+
+- name: Install stow
+  ansible.builtin.apt:
+    name: stow
+    state: present
+    update_cache: yes
+  become: True
+
+- name: Run stow to link dotfiles into home
+  ansible.builtin.command: >
+    stow -t ~ dotfiles 
+  args:
+    chdir: "{{ project_root }}"
+
