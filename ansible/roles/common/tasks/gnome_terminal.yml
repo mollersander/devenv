@@ -1,0 +1,13 @@
+---
+
+- name: Install Pixel Saver extension
+  ansible.builtin.apt:
+    name: 
+      - gnome-shell-extension-manager
+    state: present
+    update_cache: true
+  become: true
+
+- name: Disable GNOME Terminal headerbar
+  ansible.builtin.command: >
+    gsettings set org.gnome.Terminal.Legacy.Settings headerbar "@mb false"
