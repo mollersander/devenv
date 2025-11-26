@@ -8,6 +8,8 @@
       - ripgrep
       - fzf
       - python3-venv
+      - python3-pip
+      - fd-find
     state: present
 
 - name: Ensure download directory exists
