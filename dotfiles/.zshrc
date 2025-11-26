@@ -102,3 +102,6 @@ alias vi="nvim"
 alias nv="nvim"
 
 alias ll="ls -lha"
+
+# opencode
+export PATH=/home/salamander/.opencode/bin:$PATH
