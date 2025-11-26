@@ -1,6 +1,6 @@
-# Git
-.git
+# Tmux
+dotfiles/.config/tmux/plugins/
 
-# Submodules
-dotfiles/.zsh/pure/
-dotfiles/.zsh/zsh-autosuggestions/
+# MacOS
+.DS_Store
+

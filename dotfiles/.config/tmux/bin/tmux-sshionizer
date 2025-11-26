@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+SSH_CONFIG="${HOME}/.ssh/config"
+
+if [[ $# -eq 1 ]]; then
+    selected=$1
+else
+    selected=$(awk '/^Host / {print $2}' "$SSH_CONFIG" | fzf)
+fi
+
+if [[ -z $selected ]]; then
+    exit 0
+fi
+
+tmux_running=$(pgrep tmux)
+
+if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
+    tmux new-session -ds $selected
+    tmux send-keys -t "$selected" "ssh $selected" C-m
+    tmux attach-session -t "$selected"
+    exit 0
+fi
+
+if ! tmux has-session -t=$selected 2> /dev/null; then
+    tmux new-session -ds $selected
+    tmux send-keys -t "$selected" "ssh $selected" C-m
+fi
+
+tmux switch-client -t $selected
+
