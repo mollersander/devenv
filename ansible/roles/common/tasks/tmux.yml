@@ -1,0 +1,17 @@
+---
+
+- name: Define project root path fact
+  set_fact:
+    project_root: "{{ playbook_dir | dirname | dirname }}"
+
+- name: Install tmux
+  package:
+    name: tmux
+    state: present
+  become: true
+
+- name: Clone TPM repository
+  git:
+    repo: 'https://github.com/tmux-plugins/tpm.git'
+    dest: "{{ project_root }}/dotfiles/.config/tmux/plugins/tpm"
+
