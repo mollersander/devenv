@@ -1,3 +1,8 @@
+# Always open terminal with tmux
+if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+  tmux attach || tmux new
+fi
+
 # ZSH
 XDG_CONFIG_HOME="$HOME/.config"
 
