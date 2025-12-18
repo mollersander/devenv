@@ -97,7 +97,7 @@ PROMPT=" $PROMPT"
 
 # Zsh autosuggestions plugin
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#666666,bold"
-ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+ZSH_AUTOSUGGEST_STRATEGY=(history)
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # Aliases
@@ -111,3 +111,7 @@ alias ll="ls -lha"
 
 # opencode
 export PATH=/home/salamander/.opencode/bin:$PATH
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
