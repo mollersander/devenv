@@ -1,8 +1,3 @@
-# shellcheck shell=bash
-# Gruvbox Material Dark Hard Theme
-# Minimal powerline with session name, windows, and date/time
-# If changes made here does not take effect, then try to re-create the tmux session to force reload.
-
 if tp_patched_font_in_use; then
 	TMUX_POWERLINE_SEPARATOR_LEFT_BOLD=""
 	TMUX_POWERLINE_SEPARATOR_LEFT_THIN=""
@@ -15,13 +10,6 @@ else
 	TMUX_POWERLINE_SEPARATOR_RIGHT_THIN="❯"
 fi
 
-# Gruvbox Material Dark Hard Colors (official palette from sainnhe/gruvbox-material)
-# bg0 (hard background): #1d2021 (234)
-# bg_statusline1: #282828 (235)
-# bg_statusline2: #32302f (235)
-# fg1 (foreground): #ddc7a1 (223)
-# orange: #e78a4e (208)
-# aqua: #89b482 (108)
 TMUX_POWERLINE_DEFAULT_BACKGROUND_COLOR=${TMUX_POWERLINE_DEFAULT_BACKGROUND_COLOR:-'234'}
 TMUX_POWERLINE_DEFAULT_FOREGROUND_COLOR=${TMUX_POWERLINE_DEFAULT_FOREGROUND_COLOR:-'223'}
 # shellcheck disable=SC2034
